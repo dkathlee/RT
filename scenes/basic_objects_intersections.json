@@ -1,0 +1,134 @@
+{
+    "figures":[
+        {
+			"type": "cone",
+			"position": [-1.0, -1.0, -2.0],
+            "direction": [0.0,1.0,0.0],
+			"radius" : 2,
+			"color" : [0.5, 0.7, 0.7],
+			"height": 2.0
+		},
+        {
+            "type": "sphere",
+            "position": [4.0,0.0,3.0],
+            "radius" : 1.0,
+			"color" : [0.4, 0.4, 0.0],
+			"comment" : "body"
+		},
+		{
+            "type": "sphere",
+            "position": [4.0,1.35,3.0],
+            "radius" : 0.7,
+			"color" : [0.4, 0.4, 0.0],
+			"comment" : "chest"
+		},
+		{
+            "type": "sphere",
+            "position": [4.0,2.25,3.0],
+            "radius" : 0.4,
+			"color" : [0.4, 0.4, 0.0],
+			"comment" : "head"
+		},
+		{
+            "type": "sphere",
+            "position": [3.8,2.4,2.7],
+            "radius" : 0.04,
+			"color" : [1, 0.0, 0],
+			"comment": "left eye"
+		},
+		{
+            "type": "sphere",
+            "position": [4.2,2.4,2.7],
+            "radius" : 0.04,
+			"color" : [1, 0.0, 0],
+			"comment": "right eye"
+		},
+		{
+			"type": "cone",
+			"position": [4.0,2.5,3.0],
+            "direction": [0.0,1.0,0.0],
+			"radius" : 0.2,
+			"color" : [1, 0.7, 0],
+			"height": 2.0
+		},
+		{
+			"type": "cone",
+			"position": [4.0,2.25,2.7],
+            "direction": [0.0,0.0,-1.0],
+			"radius" : 0.1,
+			"color" : [1, 0.0, 0],
+			"height": 0.4
+		},
+        {
+            "type": "plane",
+            "position": [0.0,-1.0,0.0],
+            "direction": [0.0,1.0,0.0],
+			"color" : [1, 1, 1],
+			"comment": "floor"
+		},
+		{
+            "type": "plane",
+            "position": [0.0,6.0,0.0],
+            "direction": [0.0,-1.0,0.0],
+			"color" : [0, 0.7, 1],
+			"comment": "ceiling"
+		},
+		{
+            "type": "plane",
+            "position": [0.0,1.0,5.0],
+            "direction": [0.0,0.0,-1.0],
+			"color" : [0.3, 0.3, 0.3],
+			"comment": "wall"
+		},
+		{
+            "type": "plane",
+            "position": [-5.0,1.0,0.0],
+            "direction": [1.0,0.0,0.0],
+			"color" : [0.9, 0.1, 0],
+			"comment": "red wall"
+		},
+		{
+            "type": "cylinder",
+            "position": [-1.0, 0.0, 1.0],
+            "direction": [0.0,1.0,0.0],
+			"radius" : 0.5,
+			"color" : [0.0, 1.0, 0.0]
+		},
+		{
+            "type": "cylinder",
+            "position": [-1.0, 0.0, 1.0],
+            "direction": [0.0,0.0,1.0],
+			"radius" : 0.5,
+			"color" : [0.0, 1.0, 0.0]
+		},
+		{
+            "type": "cylinder",
+            "position": [-1.0, 0.0, 3.0],
+            "direction": [1.0,0.0,0.0],
+			"radius" : 0.5,
+			"color" : [0.0, 1.0, 0.0],
+			"comment": "x directed"
+
+        }
+    ],
+    "lights":[
+        {
+            "type": "point",
+            "direction": [1,-4,4],
+			"intensity" : 0.6,
+			"position" : [0, 5, -10]
+        },
+        {
+            "type": "point",
+            "direction": [1,-4,4],
+			"intensity" : 0.6,
+			"position" : [10, 5, -1]
+        }
+    ],
+    "camera": {
+            "position": [10.0,2.0,-1.0],
+            "forward": [-1,0.0,0.0],
+            "up":[0.0,1.0,0.0],
+			"background_color": [0.0, 0.5, 1.0]
+	}
+}
