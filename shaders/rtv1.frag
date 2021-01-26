@@ -465,7 +465,7 @@ vec3	get_normal(s_input obj, vec3 point)
 	Compute lightning
 */
 
-s_light_info	light_strength_and_color(vec3 ray_start, vec3 ray_dir, float light_strength, float t_max)
+s_light_info	light_strength_and_color(vec3 ray_start, vec3 ray_dir, float light_strength, uint l_type)
 {
 	int					i;
 	vec2				t;
@@ -484,7 +484,7 @@ s_light_info	light_strength_and_color(vec3 ray_start, vec3 ray_dir, float light_
 			t = intersect_ray_cylinder(ray_start, ray_dir, sbo_input[i]);
 		else if (sbo_input[i].type == obj_cone)
 			t = intersect_ray_cone(ray_start, ray_dir, sbo_input[i]);
-		if (t.x == FLT_MAX && t.y == FLT_MAX || t.x <= EPSILON && t.y <= EPSILON/* || t.x >= t_max && t.y >= t_max*/)
+		if (t.x == FLT_MAX && t.y == FLT_MAX || t.x <= EPSILON && t.y <= EPSILON || l_type == light_point && t.x >= 1.0 && t.y >= 1.0)
 		{
 			i++;
 			continue;
@@ -528,7 +528,6 @@ s_light_info	compute_lighting(vec3 hitpoint, vec3 normal, int metalness, vec3 ra
 	float				n_scal_l;
 	float				shadow_t;
 	s_intersection_info	int_info;
-	float				t_max;
 
 	res.intensity = 0.0;
 	res.color = vec4(1.0, 1.0, 1.0, 1.0);
@@ -545,18 +544,12 @@ s_light_info	compute_lighting(vec3 hitpoint, vec3 normal, int metalness, vec3 ra
 		else 
 		{
 			if (sbo_input[i].type == light_point)
-			{
 				dir_to_light = sbo_input[i].position - hitpoint;
-				t_max = 1.0;
-			}
 			else
-			{
 				dir_to_light = -sbo_input[i].direction;
-				t_max = FLT_MAX;
-			}
 			
 			//Проверка тени
-			s_light_info l_info = light_strength_and_color(hitpoint, dir_to_light, sbo_input[i].l_intensity, t_max);
+			s_light_info l_info = light_strength_and_color(hitpoint, dir_to_light, sbo_input[i].l_intensity, sbo_input[i].type);
 			if (l_info.intensity < EPSILON)
 			{
 				i++;
