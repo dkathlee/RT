@@ -490,8 +490,8 @@ s_light_info	light_strength_and_color(vec3 ray_start, vec3 ray_dir, float light_
 			continue;
 		}
 
-		vec3 p1 = t.x == FLT_MAX ? ray_start : ray_start + ray_dir * t.x;
-		vec3 p2 = t.y == FLT_MAX ? ray_start : ray_start + ray_dir * t.y;
+		vec3 p1 = t.x == FLT_MAX || t.x <= EPSILON ? ray_start : ray_start + ray_dir * t.x;
+		vec3 p2 = t.y == FLT_MAX || t.y <= EPSILON ? ray_start : ray_start + ray_dir * t.y;
 		float d = distance(p1, p2);
 		if (d > 1.1)
 		{
@@ -630,6 +630,8 @@ vec4	trace_ray(vec3 ray_start, vec3 ray_dir)
 	vec2 uv = get_uv(int_info.object, int_info.hitpoint);
 	vec4 col = get_color(int_info.object, uv);
 	norm = get_normal(int_info.object, int_info.hitpoint);
+	if (dot(ray_dir, norm) > 0)
+		norm = -norm;
 	s_light_info l_info = compute_lighting(int_info.hitpoint, norm, int(int_info.object.f_metalness), ray_dir);
 	final_color = col * (1 - int_info.object.f_transparency) * (1 - int_info.object.f_reflection) * l_info.color * l_info.intensity;
 

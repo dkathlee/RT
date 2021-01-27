@@ -20,8 +20,8 @@
             "type": "cone",
             "position": [2.0,-3,4.0],
             "direction": [0.0,1.0,0.0],
-			"radius" : 1.5,
-			"height" : 6,
+			"radius" : 3.0,
+			"height" : 3.0,
 			"color" : [0.0, 0.0, 1.0],
 			"texture" : "wave",
 			"tiling" : [50, 50]
@@ -36,14 +36,9 @@
     ],
     "lights":[
         {
-            "type": "directional",
-            "direction": [1,-4,4],
-            "intensity" : 0.5
-        },
-        {
             "type": "point",
             "position": [0,2,1],
-            "intensity" : 0.5
+            "intensity" : 1.0
         }
     ],
     "camera": {

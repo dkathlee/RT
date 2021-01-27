@@ -163,7 +163,7 @@ void			parse_ambient_values(cJSON *json_object, t_object *light);
 void			parse_sphere_values(cJSON *json_object, t_object *object);
 void			parse_texture(cJSON *json_object, t_object *object, t_rt *r);
 int				parse_type(char *type);
+void			check_cam_vectors(t_camera *c);
 t_vec2			json_parse_vec2(cJSON *value);
 t_vec4			json_parse_vec3(cJSON *value);
-void			draw_ui(t_app *app);
 #endif

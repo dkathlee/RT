@@ -110,7 +110,7 @@ void		read_scene(char *fname, t_rt *r)
 	if ((tmp = cJSON_GetObjectItemCaseSensitive(json, "camera")) == NULL)
 		handle_error("Error! File has no camera!");
 	parse_camera_values(tmp, r);
-	r->camera.right = vec4_cross(r->camera.up, r->camera.forward);
+	check_cam_vectors(&r->camera);
 	parse_lights(r, json);
 	cJSON_Delete(json);
 }

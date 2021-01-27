@@ -65,3 +65,13 @@ t_vec2		json_parse_vec2(cJSON *value)
 		handle_error("Wrong vector in .json!");
 	return (vec);
 }
+
+void		check_cam_vectors(t_camera *c)
+{
+	if (vec4_scalar(c->forward, c->up) != 0)
+		handle_error("Camera vectors must be perpendicular!");
+	c->forward = vec4_mul_f(c->forward,
+									1 / vec4_mod(c->forward));
+	c->up = vec4_mul_f(c->up, 1 / vec4_mod(c->up));
+	c->right = vec4_cross(c->up, c->forward);
+}
